@@ -3,9 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>PDF Signature Tool</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
 </head>
-<body>
-    
+<body class="flex flex-col h-screen">
+
+  <!-- Header -->
+  <header class="bg-blue-600 text-white flex items-center justify-between px-6 py-3 shadow">
+    <h1 class="text-lg font-semibold">FREE PDF Signature Tool</h1>
+    <button id="downloadBtn" class="bg-white text-blue-600 px-4 py-1 rounded hover:bg-gray-100 font-medium">
+      Download PDF
+    </button>
+  </header>
+
+  <div class="flex flex-1">
+    <!-- Sidebar -->
+    <div class="w-72 bg-white shadow p-4 flex flex-col">
+      <input id="pdfInput" type="file" accept="application/pdf" class="hidden" />
+      <div id="dropArea" class="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center cursor-pointer hover:bg-gray-50">
+        <p class="text-gray-600">Upload PDF</p>
+      </div>
+
+      <hr class="my-4">
+
+      <button id="createSignatureBtn" class="bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600">+ Create Signature</button>
+      <div id="signatureList" class="mt-4 space-y-2 overflow-y-auto flex-1"></div>
+    </div>
+
+    <!-- PDF Viewer -->
+    <div id="pdfViewer" class="flex-1 p-4 overflow-auto"></div>
+  </div>
+
+  <!-- Signature Modal -->
+  <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+    <div class="bg-white rounded-lg p-6 w-[400px] text-center shadow-lg">
+      <h2 class="text-lg font-semibold mb-2">Draw your signature</h2>
+      <canvas id="signatureCanvas" width="350" height="150" class="border border-gray-300 rounded mb-3 mx-auto cursor-crosshair"></canvas>
+      <div class="space-x-2">
+        <button id="saveSignature" class="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600">Save</button>
+        <button id="clearSignature" class="bg-gray-200 px-4 py-1 rounded hover:bg-gray-300">Clear</button>
+        <button id="closeModal" class="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600">Cancel</button>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
