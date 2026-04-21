@@ -1,4 +1,4 @@
-![Signature Demo](./images/logo.png)
+![Signature Demo](./images/markdown.png)
 #  PDF Signature Tool
 
 A free, browser-based PDF signing application that allows users to upload documents, create digital signatures, and place them anywhere on a PDF before downloading the final signed file in high quality (A4 or Letter format).
