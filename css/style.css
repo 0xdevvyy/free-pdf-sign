@@ -1,0 +1,51 @@
+body { background: #f9fafb; }
+#pdfViewer {
+    position: relative;
+    overflow-y: auto;
+    height: calc(100vh - 60px);
+    background: #f3f4f6;
+}
+.pdf-page {
+    
+    position: relative;
+    margin: 0 auto 16px auto; /* ✅ centers horizontally */
+    width: fit-content;       
+    display: block; 
+
+}
+canvas {
+    background: white;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.signature-box {
+    position: absolute;
+    overflow: hidden;
+    cursor: move;
+    border: 1px solid #9ca3af;
+    border-radius: 4px;
+    width: 150px;
+    height: 80px;
+    resize: none;
+    transform-origin: center center;
+}
+
+.signature-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.resizer {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: #3b82f6;
+    border-radius: 50%;
+    bottom: -6px;
+    right: -6px;
+    cursor: se-resize;
+}
+
+.no-border { border: none !important; }
